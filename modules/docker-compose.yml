@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  boat:
+    build: ./boat
+    container_name: boat
+    environment:
+      MODULE_NAME: boat
+    ports:
+      - "8001:8000"
+      
+  ckob:
+    build: ./ckob
+    container_name: ckob
+    environment:
+      MODULE_NAME: ckob
+    ports:
+      - "8002:8000"
+    depends_on:
+      - boat
+
+  orvd:
+    build: ./orvd
+    container_name: orvd
+    environment:
+      MODULE_NAME: orvd
+    ports:
+      - "8003:8000"
+    depends_on:
+      - boat 
